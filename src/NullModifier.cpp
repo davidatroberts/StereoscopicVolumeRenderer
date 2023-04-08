@@ -1,9 +1,7 @@
 #include "NullModifier.hpp"
 
-NullModifier::~NullModifier() {
-}
+NullModifier::~NullModifier() {}
 
-void NullModifier::modify(Matrix3D &mat,Vector &ray_direction, 
-	Vector &ray_position, Vector4 &src_rgba) {
+void NullModifier::modify(Matrix3D &mat, const Vector &ray_direction, const Vector &ray_position, Vector4 &src_rgba) {
 	return;
 }

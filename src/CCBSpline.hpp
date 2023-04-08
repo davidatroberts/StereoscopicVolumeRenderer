@@ -2,17 +2,16 @@
 #define BSPLINE_INTERPOLATOR
 
 #include "CCInterpolator.hpp"
-
 #include "Vector4.hpp"
 
-class CCBSpline: public CCInterpolator {
+class CCBSpline : public CCInterpolator {
 public:
 	CCBSpline(Vector min, Vector max);
 
 	~CCBSpline();
 
-	void preprocess(Matrix3D &mat);
-	double interpolate(Vector &position, Matrix3D &mat);
+	void preprocess(Matrix3D &mat) override;
+	double interpolate(const Vector &position, const Matrix3D &mat) const override;
 
 private:
 	Vector4 weight_coefficients_[4];

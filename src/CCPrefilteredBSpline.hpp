@@ -4,7 +4,7 @@
 #include "CCInterpolator.hpp"
 #include "Vector4.hpp"
 
-class CCPrefilteredBSpline: public CCInterpolator {
+class CCPrefilteredBSpline : public CCInterpolator {
 public:
 	CCPrefilteredBSpline(Vector min, Vector max);
 	CCPrefilteredBSpline(const CCPrefilteredBSpline &other);
@@ -12,16 +12,19 @@ public:
 	~CCPrefilteredBSpline();
 
 	void preprocess(Matrix3D &mat);
-	double interpolate(Vector &position, Matrix3D &mat);
+	double interpolate(const Vector &position, const Matrix3D &mat) const;
 
 	friend void swap(CCPrefilteredBSpline &first, CCPrefilteredBSpline &second);
-	CCPrefilteredBSpline& operator= (CCPrefilteredBSpline spline);
+	CCPrefilteredBSpline &operator=(CCPrefilteredBSpline spline);
 
 private:
 	void samples_to_coefficients(float *volume);
-	void samples_to_coefficientsX(float *volume, unsigned int pitch, unsigned int width, unsigned int height, unsigned int depth);
-	void samples_to_coefficientsY(float *volume, unsigned int pitch, unsigned int width, unsigned int height, unsigned int depth);
-	void samples_to_coefficientsZ(float *volume, unsigned int pitch, unsigned int width, unsigned int height, unsigned int depth);
+	void samples_to_coefficientsX(
+		float *volume, unsigned int pitch, unsigned int width, unsigned int height, unsigned int depth);
+	void samples_to_coefficientsY(
+		float *volume, unsigned int pitch, unsigned int width, unsigned int height, unsigned int depth);
+	void samples_to_coefficientsZ(
+		float *volume, unsigned int pitch, unsigned int width, unsigned int height, unsigned int depth);
 	void convert_to_coefficients(float *coeffs, int data_length, int step);
 	float initial_causal_coefficient(float *coeffs, int data_length, int step);
 	float initial_anticausal_coefficient(float *coeffs, int data_length, int step);

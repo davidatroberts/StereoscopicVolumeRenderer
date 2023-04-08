@@ -3,14 +3,14 @@
 
 #include "CCInterpolator.hpp"
 
-class CCTrilinear: public CCInterpolator {
+class CCTrilinear : public CCInterpolator {
 public:
 	CCTrilinear(Vector min, Vector max);
 
 	~CCTrilinear();
 
 	void preprocess(Matrix3D &mat);
-	double interpolate(Vector &position, Matrix3D &mat);
+	double interpolate(const Vector &position, const Matrix3D &mat) const;
 };
 
 #endif

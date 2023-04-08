@@ -1,20 +1,16 @@
 #include "InterpolatorFactory.hpp"
 
-#include "WindowFactory.hpp"
-#include "CCTrilinear.hpp"
+#include "CCBSpline.hpp"
 #include "CCCatmullRom.hpp"
 #include "CCPrefilteredBSpline.hpp"
-#include "CCBspline.hpp"
 #include "CCPremultipliedTrilinear.hpp"
+#include "CCTrilinear.hpp"
 #include "CCWindowSinc.hpp"
+#include "WindowFactory.hpp"
 
-InterpolatorFactory::InterpolatorFactory(Vector min, Vector max)
-: min_(min), max_(max) {
+InterpolatorFactory::InterpolatorFactory(Vector min, Vector max) : min_(min), max_(max) {}
 
-}
-
-Interpolator* InterpolatorFactory::make_interpolator(
-	VolumeSettings volume_settings) {
+Interpolator* InterpolatorFactory::make_interpolator(VolumeSettings volume_settings) {
 	switch (volume_settings.interpolation) {
 		case InterpolationType::CC_TRILINEAR:
 			return new CCTrilinear(min_, max_);
@@ -30,13 +26,10 @@ Interpolator* InterpolatorFactory::make_interpolator(
 			// create the window
 			WindowFactory window_factory;
 			auto window_func = window_factory.make_window(
-				volume_settings.window, 
-				volume_settings.window_radius, 
-				volume_settings.interpolation_settings);
+				volume_settings.window, volume_settings.window_radius, volume_settings.interpolation_settings);
 
 			// create WindowSinc passing in window
-			return new CCWindowSinc(min_, max_, volume_settings.window_radius, 
-				window_func);
+			return new CCWindowSinc(min_, max_, volume_settings.window_radius, window_func);
 		}
 		default:
 			return NULL;

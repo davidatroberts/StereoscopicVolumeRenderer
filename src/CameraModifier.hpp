@@ -1,12 +1,11 @@
 #ifndef CAMERA_MODIFIER
 #define CAMERA_MODIFIER
 
-#include "Framebuffer.hpp"
+#include "FrameBuffer.hpp"
 
 class CameraModifier {
 public:
-	virtual ~CameraModifier() {
-	}
+	virtual ~CameraModifier() {}
 
 	virtual void modify(FrameBuffer &buffer) = 0;
 };

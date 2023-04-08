@@ -3,12 +3,9 @@
 
 #include "Interpolator.hpp"
 
-class CCInterpolator: public Interpolator {
-public: 
-	CCInterpolator(Vector min, Vector max)
-	: Interpolator(min, max) {
-
-	}
+class CCInterpolator : public Interpolator {
+public:
+	CCInterpolator(Vector min, Vector max) : Interpolator(min, max) {}
 };
 
 #endif

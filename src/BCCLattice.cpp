@@ -1,39 +1,27 @@
 #include "BCCLattice.hpp"
 
+#include <climits>
+#include <cstring>
 #include <fstream>
 #include <iostream>
-#include <cstring>
-#include <climits>
+
 #include "Util.hpp"
 
 BCCLattice::BCCLattice(Vector min_coord, Vector max_coord, Vector resolution, Interpolator *interpolator)
-: Lattice(min_coord, max_coord, resolution, interpolator),  
-mat_(Matrix3D(resolution_.x, resolution_.y, resolution_.z)){
-}
+	: Lattice(min_coord, max_coord, resolution, interpolator),
+	  mat_(Matrix3D(resolution_.x, resolution_.y, resolution_.z)) {}
 
-BCCLattice::BCCLattice(const BCCLattice &other)
-: Lattice(other), mat_(other.mat_)  {
+BCCLattice::BCCLattice(const BCCLattice &other) : Lattice(other), mat_(other.mat_) {}
 
-}
-
-BCCLattice::~BCCLattice() {
-}
+BCCLattice::~BCCLattice() {}
 
 bool BCCLattice::preprocess() {
 	// set up the discrete filter we're going to use
-	std::vector<float> mask_vals = {
-		0.0, 0.0, 0.0,			
-		0.0, 0.5, 0.0,
-		0.0, 0.0, 0.0,
+	std::vector<float> mask_vals = {0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0,
 
-		0.0, 0.5, 0.0,
-		0.5, 1.0, 0.5,
-		0.0, 0.5, 0.0,
+									0.0, 0.5, 0.0, 0.5, 1.0, 0.5, 0.0, 0.5, 0.0,
 
-		0.0, 0.0, 0.0,
-		0.0, 0.5, 0.0,
-		0.0, 0.0, 0.0
-	};
+									0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0};
 	Matrix3D mask(mask_vals, 3, 3, 3);
 
 	bool err;
@@ -43,12 +31,12 @@ bool BCCLattice::preprocess() {
 }
 
 bool BCCLattice::load(std::string file_path) {
-	std::ifstream file(file_path.c_str(), std::ifstream::in|std::ifstream::binary);
+	std::ifstream file(file_path.c_str(), std::ifstream::in | std::ifstream::binary);
 	if (!file) {
 		return false;
 	}
 
-	const int data_size = (resolution_.x/2)*(resolution_.y/2)*(resolution_.z/2);
+	const int data_size = (resolution_.x / 2) * (resolution_.y / 2) * (resolution_.z / 2);
 	const int interleave = 2;
 
 	// load the blue matrix first
@@ -73,16 +61,16 @@ bool BCCLattice::load(Matrix3D &cc0, Matrix3D &cc1) {
 	const int interleave = 2;
 	interleave_to_matrix(cc0.raw_data(), mat_, Vector(0, 0, 0), interleave);
 	interleave_to_matrix(cc1.raw_data(), mat_, Vector(1, 1, 1), interleave);
-	
+
 	return true;
 }
 
-double BCCLattice::intersect(Vector &position) {
+double BCCLattice::intersect(const Vector &position) const {
 	Vector pos = position.map_range(min_coord_, max_coord_, min_coord_, volume_limit_);
 	return interpolator_->interpolate(pos, mat_);
 }
 
-Matrix3D& BCCLattice::raw_data() {
+Matrix3D &BCCLattice::raw_data() {
 	return mat_;
 }
 

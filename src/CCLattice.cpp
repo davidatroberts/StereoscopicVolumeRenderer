@@ -1,39 +1,31 @@
 #include "CCLattice.hpp"
 
+#include <climits>
+#include <cstring>
 #include <fstream>
 #include <iostream>
-#include <cstring>	
-#include <climits>
 
 #include "Util.hpp"
 
-CCLattice::CCLattice(Vector min_coord, Vector max_coord, Vector resolution, 
-	Interpolator *interpolator)
-: Lattice(min_coord, max_coord, resolution, interpolator), 
-mat_(Matrix3D(resolution_.x, resolution_.y, resolution_.z)) {
-	
-}
+CCLattice::CCLattice(Vector min_coord, Vector max_coord, Vector resolution, Interpolator *interpolator)
+	: Lattice(min_coord, max_coord, resolution, interpolator),
+	  mat_(Matrix3D(resolution_.x, resolution_.y, resolution_.z)) {}
 
-CCLattice::CCLattice(const CCLattice &other)
-: Lattice(other), mat_(other.mat_) {
+CCLattice::CCLattice(const CCLattice &other) : Lattice(other), mat_(other.mat_) {}
 
-}
-
-CCLattice::~CCLattice() {
-}
+CCLattice::~CCLattice() {}
 
 bool CCLattice::preprocess() {
 	return true;
 }
 
 bool CCLattice::load(std::string file_path) {
-	std::ifstream file(file_path.c_str(), 
-		std::ifstream::in|std::ifstream::binary);
+	std::ifstream file(file_path.c_str(), std::ifstream::in | std::ifstream::binary);
 	if (!file) {
 		return false;
 	}
 
-	const int data_size = resolution_.x*resolution_.y*resolution_.z; 
+	const int data_size = resolution_.x * resolution_.y * resolution_.z;
 	const int interleave = 1;
 
 	float *datacc0 = new float[data_size];
@@ -48,16 +40,15 @@ bool CCLattice::load(std::string file_path) {
 
 bool CCLattice::load(Matrix3D &cc0) {
 	mat_ = cc0;
-	return true;	
+	return true;
 }
 
-double CCLattice::intersect(Vector &position) {
-	Vector pos = position.map_range(min_coord_, max_coord_, min_coord_, 
-		volume_limit_);
+double CCLattice::intersect(const Vector &position) const {
+	Vector pos = position.map_range(min_coord_, max_coord_, min_coord_, volume_limit_);
 	return interpolator_->interpolate(pos, mat_);
 }
 
-Matrix3D& CCLattice::raw_data() {
+Matrix3D &CCLattice::raw_data() {
 	return mat_;
 }
 
@@ -68,7 +59,7 @@ void swap(CCLattice &first, CCLattice &second) {
 	swap(first.mat_, second.mat_);
 }
 
-CCLattice& CCLattice::operator= (CCLattice other) {
+CCLattice &CCLattice::operator=(CCLattice other) {
 	swap(*this, other);
 	return *this;
 }
