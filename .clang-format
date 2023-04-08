@@ -1,0 +1,46 @@
+# We base our styles on the standard Google C++ guide with some tweaks
+Language:      Cpp
+BasedOnStyle:  Google
+
+# We have settled on tabs for indentation generally. The justification for this
+# is that it's consistent with our Go code, and allows us to use whatever custom
+# indentation presentation we want in our own editors.
+UseTab: ForContinuationAndIndentation
+
+# Tab width is defined as four spaces, as is the indent width. This means each
+# indentation level will be a single tab.
+TabWidth:    4
+IndentWidth: 4
+
+# We tend to use quite long variable names so have selected a higher column
+# limit to avoid excess wrapping
+ColumnLimit: 120
+
+# After some discussion, we have settled on attached braces. There are mixed
+# feelings on this, but the general justification is that it keeps us in tune
+# with code from other languages we use to the greatest possible extent.
+BreakBeforeBraces: Attach
+
+# By default, access modifiers are de-indented by a single space. Because we are
+# using tabs, this means that we'd end up with weird space-based indents in
+# these cases. Under the circumstances we'd prefer to de-indent these by full
+# tab amounts.
+AccessModifierOffset: -4
+
+# Arguments to functions that don't fit on one line will by default be aligned.
+# This results in a bunch of alignment characters without improving readability
+# very much, and for long argument lists wastes a lot of space. Forcing these
+# arguments onto a new line instead benefits readability.
+#
+# In an ideal world, we'd use the newer BlockIndent value for this parameter,
+# which also forces the closing brace on a new line. However, this is only
+# supported in clang-format 14+. Revisit this later.
+AlignAfterOpenBracket: AlwaysBreak
+
+# We want to avoid bundling short functions onto a single line. Our line length
+# (longer than others) means that if we allowed this to happen, we could end up
+# with some difficult-to-read code. This forces all short functions to be laid
+# out over multiple lines.
+AllowShortBlocksOnASingleLine: Empty
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortIfStatementsOnASingleLine: Never
