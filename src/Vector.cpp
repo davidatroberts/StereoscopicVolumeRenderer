@@ -4,49 +4,39 @@
 
 Vector::Vector(double x, double y, double z) : x(x), y(y), z(z) {}
 
-Vector::Vector(Colour col) {
-	x = col.red;
-	y = col.green;
-	z = col.blue;
-}
+Vector::Vector(const Colour &col) : x(col.red), y(col.green), z(col.blue) {}
 
 Vector Vector::mult_scalar(double scalar) const {
-	Vector vec(this->x, this->y, this->z);
-	vec.x = vec.x * scalar;
-	vec.y = vec.y * scalar;
-	vec.z = vec.z * scalar;
-
-	return vec;
+	return {x * scalar, y * scalar, z * scalar};
 }
 
 double Vector::p_norm(double p) const {
-	double x = pow(this->x, p);
-	double y = pow(this->y, p);
-	double z = pow(this->z, p);
+	double x = pow(x, p);
+	double y = pow(y, p);
+	double z = pow(z, p);
 
 	double sqr = x + y + z;
 	return pow(sqr, 1.0 / p);
 }
 
 double Vector::magnitude() const {
-	return this->p_norm(2);
+	return p_norm(2);
 }
 
 Vector Vector::normalized() const {
-	double magnitude = this->magnitude();
-	return this->mult_scalar(1 / magnitude);
+	return mult_scalar(1 / magnitude());
 }
 
 double Vector::distance_squared(const Vector &vec) const {
-	double xd = this->x - vec.x;
-	double yd = this->y - vec.y;
-	double zd = this->z - vec.z;
+	double xd = x - vec.x;
+	double yd = y - vec.y;
+	double zd = z - vec.z;
 
 	return xd * xd + yd * yd + zd * zd;
 }
 
 Vector Vector::round_vec() const {
-	return {round(this->x + 0.5), round(this->y + 0.5), round(this->z + 0.5)};
+	return {round(x + 0.5), round(y + 0.5), round(z + 0.5)};
 }
 
 Vector Vector::rotate_x(double angle_degree) const {
@@ -58,16 +48,12 @@ Vector Vector::rotate_x(double angle_degree) const {
 
 Vector Vector::rotate_y(double angle_degree) const {
 	double radians = angle_degree * (M_PI / 180.0);
-	Matrix3 rm = Matrix3::y_matrix(radians);
-
-	return *this * rm;
+	return *this * Matrix3::y_matrix(radians);
 }
 
 Vector Vector::rotate_z(double angle_degree) const {
 	double radians = angle_degree * (M_PI / 180.0);
-	Matrix3 rm = Matrix3::z_matrix(radians);
-
-	return *this * rm;
+	return *this * Matrix3::z_matrix(radians);
 }
 
 Vector Vector::rotate_xyz(double x_deg, double y_deg, double z_deg) const {
@@ -75,12 +61,12 @@ Vector Vector::rotate_xyz(double x_deg, double y_deg, double z_deg) const {
 	double y_radians = y_deg * (M_PI / 180.0);
 	double z_radians = z_deg * (M_PI / 180.0);
 
-	Matrix3 xm = Matrix3::x_matrix(x_radians);
-	Matrix3 ym = Matrix3::y_matrix(y_radians);
-	Matrix3 zm = Matrix3::z_matrix(z_radians);
+	const auto xm = Matrix3::x_matrix(x_radians);
+	const auto ym = Matrix3::y_matrix(y_radians);
+	const auto zm = Matrix3::z_matrix(z_radians);
 
-	Matrix3 xym = xm * ym;
-	Matrix3 xyzm = xym * zm;
+	const auto xym = xm * ym;
+	const auto xyzm = xym * zm;
 
 	return *this * xyzm;
 }
