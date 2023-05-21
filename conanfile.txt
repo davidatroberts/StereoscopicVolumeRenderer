@@ -1,0 +1,7 @@
+[requires]
+fftw/3.3.10
+argparse/2.9
+
+[generators]
+CMakeDeps
+CMakeToolchain
