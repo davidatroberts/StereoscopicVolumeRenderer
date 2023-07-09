@@ -11,11 +11,11 @@ Vector Vector::mult_scalar(double scalar) const {
 }
 
 double Vector::p_norm(double p) const {
-	double x = pow(x, p);
-	double y = pow(y, p);
-	double z = pow(z, p);
+	double px = pow(x, p);
+	double py = pow(y, p);
+	double pz = pow(z, p);
 
-	double sqr = x + y + z;
+	double sqr = px + py + pz;
 	return pow(sqr, 1.0 / p);
 }
 
