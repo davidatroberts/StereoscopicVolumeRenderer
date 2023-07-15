@@ -1,8 +1,8 @@
-#include "optimised_anaglyph_camera.hpp"
+#include "colour_anaglyph_camera.hpp"
 
 #include "frame_buffer.hpp"
 
-OptimisedAnaglyphCamera::OptimisedAnaglyphCamera(Vector eye_position, Vector lookat,
+ColourAnaglyphCamera::ColourAnaglyphCamera(Vector eye_position, Vector lookat,
 	Vector up, ViewSettings view_settings, Camera *left_camera, 
 	Camera *right_camera)
 :StereoCamera(eye_position, lookat, up, view_settings, left_camera, 
@@ -10,11 +10,11 @@ OptimisedAnaglyphCamera::OptimisedAnaglyphCamera(Vector eye_position, Vector loo
 
 }
 
-OptimisedAnaglyphCamera::~OptimisedAnaglyphCamera() {
+ColourAnaglyphCamera::~ColourAnaglyphCamera() {
 
 }
 
-void OptimisedAnaglyphCamera::output(std::string name) {
+void ColourAnaglyphCamera::output(std::string name) {
 	// get the width and height of image
 	int width = left_camera_->buffer_->width;
 	int height = left_camera_->buffer_->height;
@@ -33,18 +33,16 @@ void OptimisedAnaglyphCamera::output(std::string name) {
 			Colour ac;
 
 			// left
-			ac.red = 0.7f*lc.green + 0.3f*lc.blue;
+			ac.red = lc.red;
 
 			// right
 			ac.green = rc.green; 
 			ac.blue = rc.blue;
-
-			ac.red = pow(ac.red, 1.0f/1.5f);
 
 			// set colour
 			anaglyph_buffer(x, y) = ac;
 		}
 	}
 
-	anaglyph_buffer.output_image("../images/optimisedanaglyph_"+name+".bmp");
+	anaglyph_buffer.output_image("../images/colouranaglyph_"+name+".bmp");
 }

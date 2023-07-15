@@ -1,10 +1,10 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
 
-#include "WindowFactory.hpp"
-#include "CCWindowSinc.hpp"
-#include "Vector.hpp"
-#include "Matrix3D.hpp"
+#include "window_factory.hpp"
+#include "cc_window_sinc.hpp"
+#include "vector.hpp"
+#include "matrix_3d.hpp"
 
 TEST(WindowSincTest, DISABLED_testCosineBell) {
 	int radius = 4;

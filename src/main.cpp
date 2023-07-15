@@ -2,20 +2,20 @@
 #include <string>
 #include <picojson.h>
 
-#include "AABoundingBox.hpp"
-#include "CameraAbs.hpp"
-#include "CameraFactory.hpp"
-#include "Caster.hpp"
-#include "FrameBuffer.hpp"
-#include "Interpolator.hpp"
-#include "InterpolatorFactory.hpp"
-#include "Lattice.hpp"
-#include "LatticeFactory.hpp"
-#include "PointModifierFactory.hpp"
-#include "Quaternion.hpp"
-#include "Settings.hpp"
-#include "TransferFunction.hpp"
-#include "Util.hpp"
+#include "aa_bounding_box.hpp"
+#include "camera_abs.hpp"
+#include "camera_factory.hpp"
+#include "caster.hpp"
+#include "frame_buffer.hpp"
+#include "interpolator.hpp"
+#include "interpolator_factory.hpp"
+#include "lattice.hpp"
+#include "lattice_factory.hpp"
+#include "point_modifier_factory.hpp"
+#include "quaternion.hpp"
+#include "settings.hpp"
+#include "transfer_function.hpp"
+#include "util.hpp"
 
 #define BASE_SAMPLING_STEP 0.015625
 

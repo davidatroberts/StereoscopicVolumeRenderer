@@ -3,7 +3,7 @@
 
 #include <vector>
 #include <iostream>
-#include "Matrix3D.hpp"
+#include "matrix_3d.hpp"
 
 TEST(Matrix3DTest, testConvolve) {
 	const int size = 16;
