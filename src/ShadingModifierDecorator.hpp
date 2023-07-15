@@ -2,11 +2,12 @@
 #define SHADING_MODIFIER_DECORATOR
 
 #include <functional>
+#include <picojson.h>
 
 #include "Matrix3D.hpp"
 #include "PointModifier.hpp"
 #include "Settings.hpp"
-#include "picojson.h"
+
 
 class ShadingModifierDecorator : public PointModifier {
  public:

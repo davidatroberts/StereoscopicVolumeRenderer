@@ -1,7 +1,6 @@
 set(HEADER_FILES
     ../include/Array.h
     ../include/CImg.h
-    ../include/picojson.h
     ../include/seconds.h
     AABoundingBox.hpp
     AnaglyphCamera.hpp
@@ -115,12 +114,14 @@ set(SOURCE_FILES
 # endif()
 
 find_package(OpenMP REQUIRED)
+find_package(picojson)
 
 add_library(caster_lib STATIC ${HEADER_FILES} ${SOURCE_FILES} )
 target_link_libraries(
     caster_lib
     ${FFTW_LIBRARIES}
-    OpenMP::OpenMP_CXX)
+    OpenMP::OpenMP_CXX
+    picojson::picojson)
 
 add_executable(gcaster main.cpp)
 target_link_libraries(gcaster caster_lib )
