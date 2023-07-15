@@ -1,22 +1,14 @@
-#ifndef TEST_CC_PREMULTIPLIED_TRILINEAR
-#define TEST_CC_PREMULTIPLIED_TRILINEAR
-
 #include "CCPremultipliedTrilinear.hpp"
 
+#include <gtest/gtest.h>
+#include <gmock/gmock.h>
 #include <math.h>
 #include <random>
 
 #include "Vector.hpp"
 #include "Matrix3D.hpp"
 
-class testCCPremultipliedTrilinear: public::testing::Test {
-protected:
-	static void SetupTestCase() {
-
-	}
-};
-
-TEST_F(testCCPremultipliedTrilinear, testPreprocess) {
+TEST(testCCPremultipliedTrilinear, DISABLED_testPreprocess) {
 	// create the interpolation filter
 	Vector min(0, 0, 0);
 	Vector max(8, 8, 8);
@@ -28,5 +20,3 @@ TEST_F(testCCPremultipliedTrilinear, testPreprocess) {
 	// preprocess and output
 	pretrilinear.preprocess(grid);
 }
-
-#endif

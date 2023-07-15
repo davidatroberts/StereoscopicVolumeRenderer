@@ -7,14 +7,14 @@
 
 class Vector4 {
 public:
+	Vector4() = default;
 	Vector4(double x, double y, double z, double w);
-	Vector4(Colour col);
-	Vector4();
+	explicit Vector4(const Colour& col);
 
 	inline void associate_colour(double scalar) {
-		this->x *= scalar;
-		this->y *= scalar;
-		this->z *= scalar;
+		x *= scalar;
+		y *= scalar;
+		z *= scalar;
 	}
 
 	inline double dot(const Vector4& vec) const {
@@ -51,10 +51,10 @@ public:
 		return Vector4(x * vec.x, y * vec.y, z * vec.z, w * vec.w);
 	}
 
-	double x;
-	double y;
-	double z;
-	double w;
+	double x{0.0};
+	double y{0.0};
+	double z{0.0};
+	double w{0.0};
 };
 
 #endif

@@ -34,3 +34,5 @@
 .vscode
 .
 gcaster
+build
+CMakeUserPresets.json

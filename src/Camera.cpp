@@ -61,8 +61,8 @@ void Camera::render_scene() {
 
 	for (int y = 0; y < vp_height_; y++) {
 		for (int x = 0; x < vp_width_; x++) {
-			pp.x = x_scale * ((double)x - 0.5 * ((double)vp_width_ - 1.0)) + x_offset;
-			pp.y = y_scale * ((double)y - 0.5 * ((double)vp_height_ - 1.0));
+			pp.x = x_scale * (static_cast<double>(x) - 0.5 * (static_cast<double>(vp_width_) - 1.0)) + x_offset;
+			pp.y = y_scale * (static_cast<double>(y) - 0.5 * (static_cast<double>(vp_height_) - 1.0));
 			const auto ray_dir = ray_direction(pp);
 
 			const auto rgba = caster_->cast(ray_origin, ray_dir);

@@ -1,18 +1,11 @@
-#ifndef TEST_MATRIX3D
-#define TEST_MATRIX3D
+#include <gtest/gtest.h>
+#include <gmock/gmock.h>
 
 #include <vector>
 #include <iostream>
 #include "Matrix3D.hpp"
 
-class testMatrix3D: public::testing::Test {
-protected:
-	static void SetupTestCase() {
-
-	}
-};
-
-TEST_F(testMatrix3D, testConvolve) {
+TEST(Matrix3DTest, testConvolve) {
 	const int size = 16;
 	Matrix3D mat(size, size, size, 0.0f);
 
@@ -67,7 +60,7 @@ TEST_F(testMatrix3D, testConvolve) {
 	EXPECT_TRUE(equal);
 }
 
-TEST_F(testMatrix3D, testMax) {
+TEST(Matrix3DTest, testMax) {
 	std::vector<float> vals = {
 		1.0, 1.0, 1.0,
 		1.0, 1.0, 1.0,
@@ -90,7 +83,7 @@ TEST_F(testMatrix3D, testMax) {
 	ASSERT_EQ(expected, max);
 }
 
-TEST_F(testMatrix3D, testDivScalar) {
+TEST(Matrix3DTest, testDivScalar) {
 	std::vector<float> vals = {
 		1.0, 4.5, 1.0,
 		1.0, 1.0, 1.0,
@@ -116,7 +109,7 @@ TEST_F(testMatrix3D, testDivScalar) {
 	ASSERT_EQ(1.0, mat(0, 0, 0));
 }
 
-TEST_F(testMatrix3D, testMultScalar) {
+TEST(Matrix3DTest, testMultScalar) {
 	std::vector<float> vals = {
 		1.0, 4.5, 1.0,
 		1.0, 1.0, 1.0,
@@ -142,7 +135,7 @@ TEST_F(testMatrix3D, testMultScalar) {
 	ASSERT_EQ(1.0, mat(0, 0, 0));
 }
 
-TEST_F(testMatrix3D, testDivScalarInPlace) {
+TEST(Matrix3DTest, testDivScalarInPlace) {
 	std::vector<float> vals = {
 		1.0, 4.5, 1.0,
 		1.0, 1.0, 1.0,
@@ -165,7 +158,7 @@ TEST_F(testMatrix3D, testDivScalarInPlace) {
 	ASSERT_EQ(2.25, mat(1, 0, 0));
 }
 
-TEST_F(testMatrix3D, testMultScalarInPlace) {
+TEST(Matrix3DTest, testMultScalarInPlace) {
 	std::vector<float> vals = {
 		1.0, 4.5, 1.0,
 		1.0, 1.0, 1.0,
@@ -188,7 +181,7 @@ TEST_F(testMatrix3D, testMultScalarInPlace) {
 	ASSERT_EQ(45.0, mat(1, 0, 0));
 }
 
-TEST_F(testMatrix3D, testCap) {
+TEST(Matrix3DTest, testCap) {
 	std::vector<float> vals = {
 		1.20, 4.5, 0.97,
 		1.0, 1.0, 1.0,
@@ -215,7 +208,7 @@ TEST_F(testMatrix3D, testCap) {
 	ASSERT_EQ(1.20f, mat(0, 0, 0));
 }
 
-TEST_F(testMatrix3D, testNeighbour) {
+TEST(Matrix3DTest, testNeighbour) {
 	Matrix3D mat(9, 9, 9, 1.0f);
 
 	// get sub matrix in the middle 3, 3, 3
@@ -259,7 +252,7 @@ TEST_F(testMatrix3D, testNeighbour) {
 	ASSERT_EQ(7, neighbourhood.depth);
 }
 
-TEST_F(testMatrix3D, testUnequalNeighbour) {
+TEST(Matrix3DTest, testUnequalNeighbour) {
 	Matrix3D mat(9, 9, 9, 1.0f);
 
 	Matrix3D neighbourhood = mat.unequal_neighbourhood(3, 3, 3, 1, 2);
@@ -282,5 +275,3 @@ TEST_F(testMatrix3D, testUnequalNeighbour) {
 	ASSERT_EQ(4, neighbourhood.height);
 	ASSERT_EQ(4, neighbourhood.depth);
 }
-
-#endif

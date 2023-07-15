@@ -1,5 +1,4 @@
-#ifndef VECTOR_H
-#define VECTOR_H
+#pragma once
 
 #include <cmath>
 #include <iosfwd>
@@ -12,7 +11,7 @@ class Vector {
 public:
 	Vector() = default;
 	Vector(double x, double y, double z);
-	explicit Vector(Colour col);
+	explicit Vector(const Colour &col);
 
 	[[nodiscard]] Vector mult_scalar(double scalar) const;
 	[[nodiscard]] double p_norm(double p) const;
@@ -88,9 +87,7 @@ public:
 	[[nodiscard]] bool operator==(const Vector &vec) const;
 	[[nodiscard]] bool operator!=(const Vector &vec) const;
 
-	double x = 0.0;
-	double y = 0.0;
-	double z = 0.0;
+	double x{0.0};
+	double y{0.0};
+	double z{0.0};
 };
-
-#endif
