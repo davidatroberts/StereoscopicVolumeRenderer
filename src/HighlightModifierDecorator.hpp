@@ -2,7 +2,7 @@
 #define HIGHLIGHT_MODIFIER_DECORATOR
 
 #include <vector>
-#include "picojson.h"
+#include <picojson.h>
 
 #include "CameraModifier.hpp"
 #include "FrameBuffer.hpp"

@@ -9,7 +9,7 @@
 #include <complex>
 
 #include "Array.h"
-#include "picojson.h"
+#include <picojson.h>
 
 struct Colour {
   double red;
