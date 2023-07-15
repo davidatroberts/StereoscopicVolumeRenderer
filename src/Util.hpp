@@ -6,9 +6,9 @@
 #include <cmath>
 #include <fstream>
 #include <string>
+#include <complex>
 
 #include "Array.h"
-#include "fftw++.h"
 #include "picojson.h"
 
 struct Colour {
@@ -29,9 +29,9 @@ typedef struct Colour Colour;
 namespace Util {
 void assert_eq(bool eq, std::string message);
 void read_short_file_as_float(std::ifstream &file, float *data, int size);
-void circshift3d(Array::array3<Complex> &in, Array::array3<Complex> &out,
+void circshift3d(Array::array3<std::complex<float>> &in, Array::array3<std::complex<float>> &out,
                  int xshift, int yshift, int zshift);
-void shift3d(Array::array3<Complex> &in, Array::array3<Complex> &out);
+void shift3d(Array::array3<std::complex<float>> &in, Array::array3<std::complex<float>> &out);
 bool solve_quad(double a, double b, double c, double &t1, double &t2);
 inline bool is_positive(float x) { return x >= 0; };
 bool near(double a, double b);

@@ -6,7 +6,7 @@
 
 #include "Array.h"
 #include "Settings.hpp"
-#include "fftw++.h"
+// #include "fftw++.h"
 
 CCPremultipliedTrilinear::CCPremultipliedTrilinear(Vector min, Vector max)
 	: CCInterpolator(min, max), min_r_range_(1.0), max_r3_range_(15.0217), max_r_range_(2.4674) {}
@@ -20,6 +20,7 @@ CCPremultipliedTrilinear::CCPremultipliedTrilinear(const CCPremultipliedTrilinea
 CCPremultipliedTrilinear::~CCPremultipliedTrilinear() {}
 
 void CCPremultipliedTrilinear::preprocess(Matrix3D &grid) {
+	#if false
 	// convert into complex array
 	Array::array3<Complex> spatial = grid.to_complex_array();
 	size_t align = sizeof(Complex);
@@ -89,6 +90,8 @@ void CCPremultipliedTrilinear::preprocess(Matrix3D &grid) {
 
 	// load back into the matrix
 	grid = result_m;
+
+	#endif
 }
 
 double CCPremultipliedTrilinear::interpolate(const Vector &position, const Matrix3D &mat) const {

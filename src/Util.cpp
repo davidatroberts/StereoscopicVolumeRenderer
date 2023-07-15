@@ -20,8 +20,8 @@ void Util::read_short_file_as_float(std::ifstream &file, float *data,
 	}
 }
 
-void Util::circshift3d(Array::array3<Complex> &in, 
-	Array::array3<Complex> &out, int xshift, int yshift, int zshift) {
+void Util::circshift3d(Array::array3<std::complex<float>> &in, 
+	Array::array3<std::complex<float>> &out, int xshift, int yshift, int zshift) {
 	for (int i=0; i<in.Nx(); i++) {
 		int ii = (i + xshift) % in.Nx();
 		for (int j=0; j<in.Ny(); j++) {
@@ -34,8 +34,8 @@ void Util::circshift3d(Array::array3<Complex> &in,
 	}
 }
 
-void Util::shift3d(Array::array3<Complex> &in, 
-	Array::array3<Complex> &out) {
+void Util::shift3d(Array::array3<std::complex<float>> &in, 
+	Array::array3<std::complex<float>> &out) {
 	circshift3d(in, out, in.Nx()/2, in.Ny()/2, in.Nz()/2);
 }
 

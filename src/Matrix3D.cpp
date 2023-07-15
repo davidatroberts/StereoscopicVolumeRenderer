@@ -24,13 +24,13 @@ Matrix3D::Matrix3D(std::vector<float> init_vals, int width, int height, int dept
 	}
 }
 
-Matrix3D::Matrix3D(Array::array3<Complex> init_arr)
+Matrix3D::Matrix3D(Array::array3<std::complex<float>> init_arr)
 	: width(init_arr.Nx()), height(init_arr.Ny()), depth(init_arr.Nz()) {
 	values_ = new float[init_arr.Nx() * init_arr.Ny() * init_arr.Nz()];
 	for (int z = 0; z < depth; ++z) {
 		for (int y = 0; y < height; ++y) {
 			for (int x = 0; x < width; ++x) {
-				Complex cmp = init_arr(x, y, z);
+				std::complex<float> cmp = init_arr(x, y, z);
 				float val = std::abs(cmp);
 				(*this)(x, y, z) = val;
 			}
@@ -237,9 +237,9 @@ Matrix3D Matrix3D::neighbourhood(int x, int y, int z, int radius) {
 	return unequal_neighbourhood(x, y, z, radius, radius);
 }
 
-Array::array3<Complex> Matrix3D::to_complex_array() {
-	size_t align = sizeof(Complex);
-	Array::array3<Complex> arr(width, height, depth, align);
+Array::array3<std::complex<float>> Matrix3D::to_complex_array() {
+	size_t align = sizeof(std::complex<float>);
+	Array::array3<std::complex<float>> arr(width, height, depth, align);
 
 	for (int z = 0; z < depth; ++z) {
 		for (int y = 0; y < height; ++y) {

@@ -1,13 +1,6 @@
 project(tests)
 
-include(FetchContent)
-FetchContent_Declare(
-    googletest
-    https://github.com/google/googletest/archive/refs/tags/v1.13.0.zip
-)
-
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-FetchContent_MakeAvailable(googletest)
+find_package(GTest)
 
 set(SOURCE_FILES
     test_cc_premultiplied_trilinear.cpp
@@ -15,13 +8,15 @@ set(SOURCE_FILES
     test_window_sinc.cpp
 )
 
+add_executable(tests ${SOURCE_FILES})
+
 target_link_libraries(
     tests
     caster_lib
     gmock_main
     gmock
-    gtest
+    gtest::gtest
 )
 
 include(GoogleTest)
-gtest_discover_tests()
+gtest_discover_tests(tests)

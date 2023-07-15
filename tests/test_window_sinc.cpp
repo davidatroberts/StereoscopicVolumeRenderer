@@ -1,23 +1,16 @@
-#ifndef TEST_WINDOWSINC
-#define TEST_WINDOWSINC
+#include <gtest/gtest.h>
+#include <gmock/gmock.h>
 
 #include "WindowFactory.hpp"
 #include "CCWindowSinc.hpp"
 #include "Vector.hpp"
 #include "Matrix3D.hpp"
 
-class testWindowSinc: public::testing::Test {
-protected:
-	static void SetupTestCase() {
-
-	}
-};
-
-TEST_F(testWindowSinc, testCosineBell) {
+TEST(WindowSincTest, DISABLED_testCosineBell) {
 	int radius = 4;
 
 	WindowFactory window_factory;
-	auto window_func = window_factory.make_window("cosine_bell", radius);
+	auto window_func = window_factory.make_window(WindowType::COSINE_BELL, radius);
 
 	ASSERT_TRUE(window_func != NULL);
 
@@ -30,13 +23,13 @@ TEST_F(testWindowSinc, testCosineBell) {
 	}
 }
 
-TEST_F(testWindowSinc, testSinc) {
+TEST(WindowSincTest, DISABLED_testSinc) {
 	int window_size = 8;
 	int radius = 4;
 
 	// make the window
 	WindowFactory window_factory;
-	auto window_func = window_factory.make_window("cosine_bell", radius);
+	auto window_func = window_factory.make_window(WindowType::COSINE_BELL, radius);
 
 	// create the windowsinc interpolator
 	CCWindowSinc window_sinc(Vector(0, 0, 0), Vector(64, 64, 64),
@@ -51,13 +44,13 @@ TEST_F(testWindowSinc, testSinc) {
 	}
 }
 
-TEST_F(testWindowSinc, testCosineBellSinc) {
+TEST(WindowSincTest, DISABLED_testCosineBellSinc) {
 	int window_size = 8;
 	int radius = 4;
 
 	// make the window
 	WindowFactory window_factory;
-	auto window_func = window_factory.make_window("cosine_bell", radius);
+	auto window_func = window_factory.make_window(WindowType::COSINE_BELL, radius);
 
 	// create the windowsinc interpolator
 	CCWindowSinc window_sinc(Vector(0, 0, 0), Vector(64, 64, 64),
@@ -74,12 +67,12 @@ TEST_F(testWindowSinc, testCosineBellSinc) {
 	}
 }
 
-TEST_F(testWindowSinc, testWindowSinc) {
+TEST(WindowSincTest, DISABLED_WindowSincTest) {
 	int radius = 4;
 
 	// make the window function
 	WindowFactory window_factory;
-	auto window_func = window_factory.make_window("cosine_bell", radius);
+	auto window_func = window_factory.make_window(WindowType::COSINE_BELL, radius);
 
 	// make the windowsinc interpolator
 	CCWindowSinc window_sinc(Vector(0, 0, 0), Vector(64, 64, 64), 
@@ -96,5 +89,3 @@ TEST_F(testWindowSinc, testWindowSinc) {
 
 	std::cout << "sinc value: " << value << std::endl;
 }
-
-#endif

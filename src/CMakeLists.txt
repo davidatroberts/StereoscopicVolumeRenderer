@@ -1,7 +1,6 @@
 set(HEADER_FILES
     ../include/Array.h
     ../include/CImg.h
-    ../include/fftw++.h
     ../include/picojson.h
     ../include/seconds.h
     AABoundingBox.hpp
@@ -107,14 +106,13 @@ set(SOURCE_FILES
     Vector.cpp
     Vector4.cpp
     WindowFactory.cpp
-    fftw++.cpp
 )
 
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "findFFTW")
-find_package(FFTW)
-if (FFTW_FOUND)
-    include_directories(${FFTW_INCLUDE_DIRS})
-endif()
+# set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "findFFTW")
+# find_package(FFTW)
+# if (FFTW_FOUND)
+#     include_directories(${FFTW_INCLUDE_DIRS})
+# endif()
 
 find_package(OpenMP REQUIRED)
 
