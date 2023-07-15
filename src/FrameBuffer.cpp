@@ -3,7 +3,9 @@
 #include <iostream>
 #include <fstream>
 #include <algorithm>
-#include "CImg.h"
+
+#define cimg_display 0
+#include <CImg.h>
 using namespace cimg_library;
 
 FrameBuffer::FrameBuffer(int width, int height)
