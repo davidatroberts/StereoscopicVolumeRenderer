@@ -1,5 +1,6 @@
 #include <ctime>
 #include <string>
+#include <picojson.h>
 
 #include "AABoundingBox.hpp"
 #include "CameraAbs.hpp"
@@ -15,7 +16,6 @@
 #include "Settings.hpp"
 #include "TransferFunction.hpp"
 #include "Util.hpp"
-#include "picojson.h"
 
 #define BASE_SAMPLING_STEP 0.015625
 
