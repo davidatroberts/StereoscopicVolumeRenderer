@@ -1,7 +1,6 @@
 #include "null_camera_modifier.hpp"
 
-NullCameraModifier::~NullCameraModifier() {
-}
+NullCameraModifier::~NullCameraModifier() {}
 
 void NullCameraModifier::modify(FrameBuffer &buffer) {
 	return;

@@ -4,8 +4,7 @@
 
 #include "vector.hpp"
 
-class Quaternion
-{
+class Quaternion {
 public:
 	Quaternion(double w, Vector v);
 
@@ -17,13 +16,13 @@ public:
 	static Quaternion create_rotation(const Vector& vec, double angle);
 	static Quaternion euler_to_quaternion(double yaw, double pitch, double roll);
 
-	void operator+= (const Quaternion& q);
-	void operator-= (const Quaternion& q);
-	Quaternion operator+ (const Quaternion& q);
-	Quaternion operator- (const Quaternion& q);
-	Quaternion operator* (Quaternion& rhs);
-	Quaternion operator/ (const double& rhs);
-	bool operator== (const Quaternion& q) const;
+	void operator+=(const Quaternion& q);
+	void operator-=(const Quaternion& q);
+	Quaternion operator+(const Quaternion& q);
+	Quaternion operator-(const Quaternion& q);
+	Quaternion operator*(Quaternion& rhs);
+	Quaternion operator/(const double& rhs);
+	bool operator==(const Quaternion& q) const;
 
 	double w;
 	Vector v;

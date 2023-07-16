@@ -31,6 +31,10 @@
 *.out
 *.app
 
+# MacOS
+.DS_STORE
+
+# Project specific 
 .vscode
 .
 gcaster

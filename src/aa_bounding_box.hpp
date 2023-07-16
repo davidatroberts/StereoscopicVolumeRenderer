@@ -1,8 +1,8 @@
 #pragma once
 
-#include "vector.hpp"
-#include "util.hpp"
 #include "lattice.hpp"
+#include "util.hpp"
+#include "vector.hpp"
 
 class AABoundingBox {
 public:

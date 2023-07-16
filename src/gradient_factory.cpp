@@ -4,10 +4,9 @@
 
 std::function<Vector(Matrix3D &mat, Vector)> GradientFactory::make_gradient(
 	GradientType gradient_type, Vector res_max) {
-
 	switch (gradient_type) {
 		case GradientType::CENTRAL_DIFFERENCE: {
-			return [&res_max] (Matrix3D &mat, Vector pos) {
+			return [&res_max](Matrix3D &mat, Vector pos) {
 				// std::cout << "made it to the function" << std::endl;
 
 				// interpolation function to use

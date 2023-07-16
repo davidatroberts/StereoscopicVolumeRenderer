@@ -1,17 +1,17 @@
 #pragma once
 
+#include "camera.hpp"
 #include "camera_abs.hpp"
-#include "vector.hpp"
-#include "util.hpp"
 #include "caster.hpp"
 #include "settings.hpp"
-#include "camera.hpp"
+#include "util.hpp"
+#include "vector.hpp"
 
 class FrameBuffer;
-class StereoCamera: public CameraAbs {
+class StereoCamera : public CameraAbs {
 public:
-	StereoCamera(Vector eye_position, Vector lookat, Vector up,
-		ViewSettings view_settings, Camera *left_camera, 
+	StereoCamera(
+		Vector eye_position, Vector lookat, Vector up, ViewSettings view_settings, Camera *left_camera,
 		Camera *right_camera);
 	StereoCamera(const StereoCamera &other);
 
@@ -20,12 +20,11 @@ public:
 	void compute_uvw();
 	void setup_camera();
 	void render(bool thread);
-	void render_highlights(GraphSettings &graph_settings,
-		VolumeSettings &volume_settings, std::string image);
+	void render_highlights(GraphSettings &graph_settings, VolumeSettings &volume_settings, std::string image);
 	virtual void output(std::string name);
 
 	friend void swap(StereoCamera &first, StereoCamera &second);
-	StereoCamera& operator= (StereoCamera other);
+	StereoCamera &operator=(StereoCamera other);
 
 	double x_;
 

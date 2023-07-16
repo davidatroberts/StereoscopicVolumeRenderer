@@ -1,24 +1,20 @@
 #pragma once
 
-#include <string>
-#include <vector>
-#include <map>
 #include <picojson.h>
 
+#include <map>
+#include <string>
+#include <vector>
+
+#include "pair.hpp"
 #include "util.hpp"
 #include "vector.hpp"
-#include "pair.hpp"
 
 #define VERBOSE
 #define BASE_WIDTH 300.0
 #define BASE_HEIGHT 300.0
 
-enum class LatticeType {
-	CC,
-	BCC,
-	FCC,
-	UNKNOWN
-};
+enum class LatticeType { CC, BCC, FCC, UNKNOWN };
 
 enum class InterpolationType {
 	CC_TRILINEAR,
@@ -59,15 +55,9 @@ enum class CameraType {
 	UNKNOWN
 };
 
-enum class IlluminationModelType {
-	BLINN_PHONG,
-	UNKNOWN
-};
+enum class IlluminationModelType { BLINN_PHONG, UNKNOWN };
 
-enum class GradientType {
-	CENTRAL_DIFFERENCE,
-	UNKNOWN
-};
+enum class GradientType { CENTRAL_DIFFERENCE, UNKNOWN };
 
 struct ViewSettings {
 	CameraType camera;
@@ -146,27 +136,25 @@ struct ShaderSettings {
 };
 
 namespace Settings {
-	ViewSettings read_view_settings(picojson::value::object &json_obj);
-	RaySettings read_ray_settings(picojson::value::object &json_obj);
-	VolumeSettings read_volume_settings(picojson::value::object &json_obj);
-	GraphSettings read_graph_settings(picojson::value::object &json_obj);
-	TransferSettings read_transfer_settings(picojson::value::object &json_obj);
-	PointModifierSettings read_point_modifier_settings(
-		picojson::value::object &json_obj);
-	CameraModifierSettings read_camera_modifier_settings(
-		picojson::value::object &json_obj);
-	ShaderSettings read_shader_settings(picojson::value::object &json_obj);
+ViewSettings read_view_settings(picojson::value::object &json_obj);
+RaySettings read_ray_settings(picojson::value::object &json_obj);
+VolumeSettings read_volume_settings(picojson::value::object &json_obj);
+GraphSettings read_graph_settings(picojson::value::object &json_obj);
+TransferSettings read_transfer_settings(picojson::value::object &json_obj);
+PointModifierSettings read_point_modifier_settings(picojson::value::object &json_obj);
+CameraModifierSettings read_camera_modifier_settings(picojson::value::object &json_obj);
+ShaderSettings read_shader_settings(picojson::value::object &json_obj);
 
-	Vector read_vector(picojson::value &json_val);
-	Colour read_colour(picojson::value &json_val);
+Vector read_vector(picojson::value &json_val);
+Colour read_colour(picojson::value &json_val);
 
-	void parse_node_list(GraphSettings &graph);
+void parse_node_list(GraphSettings &graph);
 
-	void print(ViewSettings &settings);
-	void print(RaySettings &settings);
-	void print(VolumeSettings &settings);
-	void print(GraphSettings &settings);
-	void print(TransferSettings &settings);
-	void print(PointModifierSettings &settings);
-	void print(ShaderSettings &settings);
-}
+void print(ViewSettings &settings);
+void print(RaySettings &settings);
+void print(VolumeSettings &settings);
+void print(GraphSettings &settings);
+void print(TransferSettings &settings);
+void print(PointModifierSettings &settings);
+void print(ShaderSettings &settings);
+}  // namespace Settings

@@ -2,10 +2,10 @@
 
 #include <string>
 
-#include "vector.hpp"
-#include "settings.hpp"
-#include "lattice.hpp"
 #include "interpolator.hpp"
+#include "lattice.hpp"
+#include "settings.hpp"
+#include "vector.hpp"
 
 class LatticeFactory {
 public:
@@ -13,7 +13,7 @@ public:
 
 	~LatticeFactory();
 
-	Lattice* make_lattice(LatticeType type);
+	Lattice *make_lattice(LatticeType type);
 
 private:
 	Vector min_coord_;
