@@ -1,5 +1,4 @@
-#ifndef MATRIX3_H
-#define MATRIX3_H
+#pragma once
 
 #include <array>
 #include <cmath>
@@ -26,5 +25,3 @@ public:
 private:
 	std::array<float, 9> values_;
 };
-
-#endif

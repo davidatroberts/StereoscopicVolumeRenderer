@@ -1,5 +1,4 @@
-#ifndef FCC_LATTICE_H
-#define FCC_LATTICE_H
+#pragma once
 
 #include "lattice.hpp"
 
@@ -23,5 +22,3 @@ class FCCLattice : public Lattice {
  private:
   Matrix3D mat_;
 };
-
-#endif

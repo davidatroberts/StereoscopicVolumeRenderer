@@ -1,5 +1,4 @@
-#ifndef NULL_CAMERA_MODIFIER
-#define NULL_CAMERA_MODIFIER
+#pragma once
 
 #include "camera_modifier.hpp"
 #include "frame_buffer.hpp"
@@ -10,5 +9,3 @@ public:
 
 	void modify(FrameBuffer &buffer);
 };
-
-#endif

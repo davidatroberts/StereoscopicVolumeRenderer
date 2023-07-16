@@ -1,5 +1,4 @@
-#ifndef CC_LATTICE_H
-#define CC_LATTICE_H
+#pragma once
 
 #include "lattice.hpp"
 
@@ -23,5 +22,3 @@ class CCLattice : public Lattice {
  private:
   Matrix3D mat_;
 };
-
-#endif

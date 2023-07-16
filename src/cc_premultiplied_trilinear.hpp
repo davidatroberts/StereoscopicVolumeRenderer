@@ -1,5 +1,4 @@
-#ifndef PREMULTIPLIED_TRILINEAR
-#define PREMULTIPLIED_TRILINEAR
+#pragma once
 
 #include "cc_interpolator.hpp"
 #include "vector4.hpp"
@@ -26,5 +25,3 @@ private:
 	double max_r3_range_;
 	double max_r_range_;
 };
-
-#endif

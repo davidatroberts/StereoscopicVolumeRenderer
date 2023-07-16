@@ -1,5 +1,4 @@
-#ifndef POINT_MODIFIER
-#define POINT_MODIFIER
+#pragma once
 
 #include "matrix_3d.hpp"
 #include "vector.hpp"
@@ -12,5 +11,3 @@ class PointModifier {
   virtual void modify(Matrix3D &mat, const Vector &ray_direction,
                       const Vector &ray_position, Vector4 &src_rgba) = 0;
 };
-
-#endif

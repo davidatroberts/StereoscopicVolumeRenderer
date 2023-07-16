@@ -1,5 +1,4 @@
-#ifndef PERLIN_MODIFIER_DECORATOR
-#define PERLIN_MODIFIER_DECORATOR
+#pragma once
 
 #include "cc_lattice.hpp"
 #include "cc_trilinear.hpp"
@@ -32,5 +31,3 @@ class PerlinModifierDecorator : public PointModifier {
   VolumeSettings volume_settings_;
   int multiplier_;
 };
-
-#endif

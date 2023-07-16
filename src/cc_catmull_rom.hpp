@@ -1,5 +1,4 @@
-#ifndef CATMULL_ROM_INTERPOLATOR_H
-#define CATMULL_ROM_INTERPOLATOR_H
+#pragma once
 
 #include "cc_interpolator.hpp"
 #include "matrix_3d.hpp"
@@ -17,5 +16,3 @@ public:
 private:
 	Vector4 weight_coefficients_[4];
 };
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef AA_BOUNDING_BOX_H
-#define AA_BOUNDING_BOX_H
+#pragma once
 
 #include "vector.hpp"
 #include "util.hpp"
@@ -18,5 +17,3 @@ public:
 	Vector bboxmax;
 	Lattice *lattice;
 };
-
-#endif

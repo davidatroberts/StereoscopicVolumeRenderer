@@ -1,5 +1,4 @@
-#ifndef WINDOW_FACTORY
-#define WINDOW_FACTORY
+#pragma once
 
 #include <functional>
 #include <map>
@@ -13,5 +12,3 @@ public:
 	std::function<double(double)> make_window(WindowType window_type,
 		int radius, std::map<std::string, double> interpolation_settings = std::map<std::string, double>{}); 
 };
-
-#endif

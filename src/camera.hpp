@@ -1,5 +1,4 @@
-#ifndef CAMERA_H
-#define CAMERA_H
+#pragma once
 
 #include <string>
 
@@ -60,5 +59,3 @@ protected:
 private:
 	void determine_highlight_positions(GraphSettings &graph_settings, Pair &p);
 };
-
-#endif

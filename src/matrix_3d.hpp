@@ -1,5 +1,4 @@
-#ifndef MATRIX3D_H
-#define MATRIX3D_H
+#pragma once
 
 #include <cmath>
 #include <iostream>
@@ -45,5 +44,3 @@ public:
 private:
 	float *values_;
 };
-
-#endif

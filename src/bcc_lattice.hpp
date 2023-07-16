@@ -1,5 +1,4 @@
-#ifndef BCC_LATTICE_H
-#define BCC_LATTICE_H
+#pragma once
 
 #include "lattice.hpp"
 
@@ -22,5 +21,3 @@ public:
 private:
 	Matrix3D mat_;
 };
-
-#endif

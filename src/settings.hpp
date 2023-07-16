@@ -1,5 +1,4 @@
-#ifndef SETTINGS_H
-#define SETTINGS_H
+#pragma once
 
 #include <string>
 #include <vector>
@@ -171,5 +170,3 @@ namespace Settings {
 	void print(PointModifierSettings &settings);
 	void print(ShaderSettings &settings);
 }
-
-#endif

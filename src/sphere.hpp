@@ -1,5 +1,4 @@
-#ifndef SPHERE_H
-#define SPHERE_H
+#pragma once
 
 #include "vector.hpp"
 
@@ -15,5 +14,3 @@ private:
 	Vector centre_;
 	double radius_;
 };
-
-#endif

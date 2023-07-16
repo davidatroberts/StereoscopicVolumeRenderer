@@ -1,5 +1,4 @@
-#ifndef CAMERA_ABS
-#define CAMERA_ABS
+#pragma once
 
 #include <string>
 
@@ -21,5 +20,3 @@ public:
 		VolumeSettings &volume_settings, std::string image_side) = 0;
 	virtual void output(std::string name) = 0;
 };
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef WINDOW_SINC_INTERPOLATOR
-#define WINDOW_SINC_INTERPOLATOR
+#pragma once
 
 #include "cc_interpolator.hpp"
 
@@ -24,5 +23,3 @@ private:
 	int window_m_;
 	std::function<double(double)> window_func_;
 };
-
-#endif

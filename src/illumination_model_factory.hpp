@@ -1,5 +1,4 @@
-#ifndef ILLUMINATIONMODEL_FACTORY
-#define ILLUMINATIONMODEL_FACTORY
+#pragma once
 
 #include <functional>
 #include "settings.hpp"
@@ -11,5 +10,3 @@ public:
 		Vector, double, Vector, Vector)> make_model(
 		IlluminationModelType model_type);
 };
-
-#endif

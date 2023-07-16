@@ -1,5 +1,4 @@
-#ifndef PREFILTERED_BSPLINE_H
-#define PREFILTERED_BSPLINE_H
+#pragma once
 
 #include "cc_interpolator.hpp"
 #include "vector4.hpp"
@@ -32,5 +31,3 @@ private:
 	float *coeffs_;
 	Vector4 weight_coefficients_[4];
 };
-
-#endif

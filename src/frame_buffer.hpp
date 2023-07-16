@@ -1,5 +1,4 @@
-#ifndef FRAME_BUFFER_H
-#define FRAME_BUFFER_H
+#pragma once
 
 #include <string>
 
@@ -25,5 +24,3 @@ public:
 private:
 	Colour *img_;
 };
-
-#endif

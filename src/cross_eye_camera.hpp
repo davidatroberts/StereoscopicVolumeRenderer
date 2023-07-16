@@ -1,5 +1,4 @@
-#ifndef CROSS_EYE_CAMERA
-#define CROSS_EYE_CAMERA 
+#pragma once
 
 #include "stereo_camera.hpp"
 #include "camera.hpp"
@@ -19,5 +18,3 @@ public:
 
 	void output(std::string name);
 };
-
-#endif

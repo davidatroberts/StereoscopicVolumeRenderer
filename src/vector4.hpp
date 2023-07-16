@@ -1,5 +1,4 @@
-#ifndef VECTOR4_H
-#define VECTOR4_H
+#pragma once
 
 #include <cmath>
 
@@ -56,5 +55,3 @@ public:
 	double z{0.0};
 	double w{0.0};
 };
-
-#endif

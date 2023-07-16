@@ -1,5 +1,4 @@
-#ifndef BSPLINE_INTERPOLATOR
-#define BSPLINE_INTERPOLATOR
+#pragma once
 
 #include "cc_interpolator.hpp"
 #include "vector4.hpp"
@@ -16,5 +15,3 @@ public:
 private:
 	Vector4 weight_coefficients_[4];
 };
-
-#endif

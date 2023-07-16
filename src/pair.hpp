@@ -1,5 +1,4 @@
-#ifndef PAIR_H
-#define PAIR_H
+#pragma once
 
 #include <map>
 
@@ -25,5 +24,3 @@ public:
 	Sphere node1, node2;
 	std::vector<PairFrag> position_list;
 };
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef PREVIEW_BUFFER_DECORATOR
-#define PREVIEW_BUFFER_DECORATOR
+#pragma once
 
 #include "frame_buffer_abs.hpp"
 #include "util.hpp"
@@ -24,5 +23,3 @@ public:
 private:
 	FrameBufferAbs *buffer_;
 };
-
-#endif

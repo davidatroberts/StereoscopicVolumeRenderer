@@ -1,5 +1,4 @@
-#ifndef CASTER_H
-#define CASTER_H
+#pragma once
 
 #include "aa_bounding_box.hpp"
 #include "frame_buffer.hpp"
@@ -31,5 +30,3 @@ protected:
 	double sample_step_;
 	Colour background_colour_;
 };
-
-#endif

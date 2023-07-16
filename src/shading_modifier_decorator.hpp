@@ -1,5 +1,4 @@
-#ifndef SHADING_MODIFIER_DECORATOR
-#define SHADING_MODIFIER_DECORATOR
+#pragma once
 
 #include <functional>
 #include <picojson.h>
@@ -36,5 +35,3 @@ class ShadingModifierDecorator : public PointModifier {
       illumination_;
   std::function<Vector(Matrix3D &mat, Vector)> gradient_;
 };
-
-#endif

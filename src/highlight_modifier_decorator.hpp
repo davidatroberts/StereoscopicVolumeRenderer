@@ -1,5 +1,4 @@
-#ifndef HIGHLIGHT_MODIFIER_DECORATOR
-#define HIGHLIGHT_MODIFIER_DECORATOR
+#pragma once
 
 #include <vector>
 #include <picojson.h>
@@ -33,5 +32,3 @@ private:
 	double sphere_radius_;
 	Colour highlight_colour_;
 };
-
-#endif

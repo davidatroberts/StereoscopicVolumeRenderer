@@ -1,5 +1,4 @@
-#ifndef GRADIENT_FACTORY
-#define GRADIENT_FACTORY
+#pragma once
 
 #include <functional>
 #include "matrix_3d.hpp"
@@ -12,5 +11,3 @@ public:
 		GradientType gradient_type, Vector res_max);
 
 };
-
-#endif

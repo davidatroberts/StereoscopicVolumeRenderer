@@ -1,5 +1,4 @@
-#ifndef INTERPOLATOR_FACTORY_H
-#define INTERPOLATOR_FACTORY_H
+#pragma once
 
 #include "vector.hpp"
 #include "interpolator.hpp"
@@ -15,5 +14,3 @@ private:
 	Vector min_;
 	Vector max_;
 };
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef LATTICE_H
-#define LATTICE_H
+#pragma once
 
 #include <cmath>
 #include <fstream>
@@ -32,5 +31,3 @@ class Lattice {
   Vector volume_limit_;
   Interpolator *interpolator_;
 };
-
-#endif

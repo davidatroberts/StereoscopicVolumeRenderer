@@ -1,5 +1,4 @@
-#ifndef FRAME_BUFFER_ABS
-#define FRAME_BUFFER_ABS
+#pragma once
 
 #include <string>
 
@@ -24,5 +23,3 @@ public:
 	int width;
 	int height;
 };
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef HALFCOLURANAGLYPH_H
-#define HALFCOLURANAGLYPH_H
+#pragma once
 
 #include "stereo_camera.hpp"
 #include "camera.hpp"
@@ -19,5 +18,3 @@ public:
 
 	void output(std::string name);
 };
-
-#endif

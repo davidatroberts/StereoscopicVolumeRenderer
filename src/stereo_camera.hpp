@@ -1,5 +1,4 @@
-#ifndef STEREO_CAMERA_H
-#define STEREO_CAMERA_H
+#pragma once
 
 #include "camera_abs.hpp"
 #include "vector.hpp"
@@ -45,5 +44,3 @@ private:
 	int vp_height_;
 	double distance_;
 };
-
-#endif

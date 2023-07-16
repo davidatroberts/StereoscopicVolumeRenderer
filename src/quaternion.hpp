@@ -1,5 +1,4 @@
-#ifndef QUATERNION_H
-#define QUATERNION_H
+#pragma once
 
 #include <cmath>
 
@@ -29,5 +28,3 @@ public:
 	double w;
 	Vector v;
 };
-
-#endif

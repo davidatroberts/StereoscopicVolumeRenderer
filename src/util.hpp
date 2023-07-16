@@ -1,5 +1,4 @@
-#ifndef UTIL_H
-#define UTIL_H
+#pragma once
 
 #include <stdint.h>
 
@@ -52,5 +51,3 @@ std::string read_file(const char *filename, bool &parsed);
 
 extern double epsilon;
 }  // namespace Util
-
-#endif

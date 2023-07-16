@@ -1,5 +1,4 @@
-#ifndef LATTICE_FACTORY_H
-#define LATTICE_FACTORY_H
+#pragma once
 
 #include <string>
 
@@ -22,5 +21,3 @@ private:
 	Vector resolution_;
 	Interpolator *interpolator_;
 };
-
-#endif

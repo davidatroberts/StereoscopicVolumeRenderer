@@ -1,5 +1,4 @@
-#ifndef TRILINEAR_INTERPOLATOR
-#define TRILINEAR_INTERPOLATOR
+#pragma once
 
 #include "cc_interpolator.hpp"
 
@@ -12,5 +11,3 @@ public:
 	void preprocess(Matrix3D &mat);
 	double interpolate(const Vector &position, const Matrix3D &mat) const;
 };
-
-#endif

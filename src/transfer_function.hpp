@@ -1,5 +1,4 @@
-#ifndef TRANSFER_FUNCTION_H
-#define TRANSFER_FUNCTION_H 
+#pragma once
 
 #include <climits>
 
@@ -60,5 +59,3 @@ private:
 	double base_sample_step_;
 	double min_dens, max_dens, min_trans, max_trans;
 };
-
-#endif

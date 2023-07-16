@@ -1,5 +1,4 @@
-#ifndef CAMERA_FACTORY_H
-#define CAMERA_FACTORY_H
+#pragma once
 
 #include "vector.hpp"
 #include "camera_abs.hpp"
@@ -21,5 +20,3 @@ private:
 	Caster *caster_;
 	RaySettings ray_settings_;
 };
-
-#endif

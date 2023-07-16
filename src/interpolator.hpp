@@ -1,5 +1,4 @@
-#ifndef INTERPOLATOR_H
-#define INTERPOLATOR_H
+#pragma once
 
 #include "matrix_3d.hpp"
 #include "vector.hpp"
@@ -21,5 +20,3 @@ protected:
 	int height_;
 	int depth_;
 };
-
-#endif

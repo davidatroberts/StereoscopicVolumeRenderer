@@ -1,5 +1,4 @@
-#ifndef CAMERA_MODIFIER_FACTORY
-#define CAMERA_MODIFIER_FACTORY
+#pragma once
 
 #include "settings.hpp"
 #include "camera_modifier.hpp"
@@ -11,5 +10,3 @@ public:
 	CameraModifier* make_modifier(CameraModifierSettings &settings,
 		ViewSettings view_settings);
 };
-
-#endif
