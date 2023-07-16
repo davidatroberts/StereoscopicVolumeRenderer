@@ -3,7 +3,7 @@
 #include "camera_modifier.hpp"
 #include "frame_buffer.hpp"
 
-class NullCameraModifier: public CameraModifier {
+class NullCameraModifier : public CameraModifier {
 public:
 	~NullCameraModifier();
 

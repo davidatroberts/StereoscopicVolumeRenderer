@@ -1,6 +1,7 @@
+#include <picojson.h>
+
 #include <ctime>
 #include <string>
-#include <picojson.h>
 
 #include "aa_bounding_box.hpp"
 #include "camera_abs.hpp"

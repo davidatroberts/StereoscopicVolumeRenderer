@@ -1,41 +1,31 @@
-#include <gtest/gtest.h>
 #include <gmock/gmock.h>
+#include <gtest/gtest.h>
 
-#include <vector>
 #include <iostream>
+#include <vector>
+
 #include "matrix_3d.hpp"
 
 TEST(Matrix3DTest, testConvolve) {
 	const int size = 16;
 	Matrix3D mat(size, size, size, 0.0f);
 
-	for (int z=0; z<size; z++) {
-		for (int y=0; y<size; y++) {
-			for (int x=0; x<size; x++) {
+	for (int z = 0; z < size; z++) {
+		for (int y = 0; y < size; y++) {
+			for (int x = 0; x < size; x++) {
 				// fill odd with 0
-				if ((x%2==1) && (y%2==1) && (z%2==1)) {
+				if ((x % 2 == 1) && (y % 2 == 1) && (z % 2 == 1)) {
 					mat(x, y, z) = 1.0f;
 				}
-				if ((x%2==0) && (y%2==0) && (z%2==0)) {
+				if ((x % 2 == 0) && (y % 2 == 0) && (z % 2 == 0)) {
 					mat(x, y, z) = 1.0f;
 				}
 			}
 		}
 	}
 
-	std::vector<float> mask_vals = {
-		0.0, 0.0, 0.0,			
-		0.0, 0.5, 0.0,
-		0.0, 0.0, 0.0,
-
-		0.0, 0.5, 0.0,
-		0.5, 1.0, 0.5,
-		0.0, 0.5, 0.0,
-
-		0.0, 0.0, 0.0,
-		0.0, 0.5, 0.0,
-		0.0, 0.0, 0.0
-	};
+	std::vector<float> mask_vals = {0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.5, 1.0,
+									0.5, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0};
 	Matrix3D mask(mask_vals, 3, 3, 3);
 
 	bool err;
@@ -45,9 +35,9 @@ TEST(Matrix3DTest, testConvolve) {
 
 	bool equal = true;
 	int count = 0;
-	for (int z=0; z<size; z++) {
-		for (int y=0; y<size; y++) {
-			for (int x=0; x<size; x++) {
+	for (int z = 0; z < size; z++) {
+		for (int y = 0; y < size; y++) {
+			for (int x = 0; x < size; x++) {
 				float val = mat(x, y, z);
 				if (val != 1.0f) {
 					count++;
@@ -61,19 +51,8 @@ TEST(Matrix3DTest, testConvolve) {
 }
 
 TEST(Matrix3DTest, testMax) {
-	std::vector<float> vals = {
-		1.0, 1.0, 1.0,
-		1.0, 1.0, 1.0,
-		1.0, 1.0, 1.0,
-
-		1.0, 1.0, 1.0,
-		1.0, 1.0, 1.0,
-		1.0, 1.0, 1.0,
-
-		1.0, 1.0, 1.0,
-		1.0, 1.0, 1.0,
-		1.0, 1.0, 1.0
-	};
+	std::vector<float> vals = {1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+							   1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0};
 
 	Matrix3D mat(vals, 3, 3, 3);
 
@@ -84,19 +63,8 @@ TEST(Matrix3DTest, testMax) {
 }
 
 TEST(Matrix3DTest, testDivScalar) {
-	std::vector<float> vals = {
-		1.0, 4.5, 1.0,
-		1.0, 1.0, 1.0,
-		1.0, 1.0, 1.0,
-
-		1.0, 1.0, 1.0,
-		1.0, 1.0, 1.0,
-		1.0, 1.0, 1.0,
-
-		1.0, 1.0, 1.0,
-		1.0, 1.0, 1.0,
-		1.0, 1.0, 1.0
-	};
+	std::vector<float> vals = {1.0, 4.5, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+							   1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0};
 	Matrix3D mat(vals, 3, 3, 3);
 
 	Matrix3D div_mat = mat / 2.0;
@@ -110,19 +78,8 @@ TEST(Matrix3DTest, testDivScalar) {
 }
 
 TEST(Matrix3DTest, testMultScalar) {
-	std::vector<float> vals = {
-		1.0, 4.5, 1.0,
-		1.0, 1.0, 1.0,
-		1.0, 1.0, 1.0,
-
-		1.0, 1.0, 1.0,
-		1.0, 1.0, 1.0,
-		1.0, 1.0, 1.0,
-
-		1.0, 1.0, 1.0,
-		1.0, 1.0, 1.0,
-		1.0, 1.0, 1.0
-	};
+	std::vector<float> vals = {1.0, 4.5, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+							   1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0};
 	Matrix3D mat(vals, 3, 3, 3);
 
 	Matrix3D mult_mat = mat * 10.0;
@@ -136,19 +93,8 @@ TEST(Matrix3DTest, testMultScalar) {
 }
 
 TEST(Matrix3DTest, testDivScalarInPlace) {
-	std::vector<float> vals = {
-		1.0, 4.5, 1.0,
-		1.0, 1.0, 1.0,
-		1.0, 1.0, 1.0,
-
-		1.0, 1.0, 1.0,
-		1.0, 1.0, 1.0,
-		1.0, 1.0, 1.0,
-
-		1.0, 1.0, 1.0,
-		1.0, 1.0, 1.0,
-		1.0, 1.0, 1.0
-	};
+	std::vector<float> vals = {1.0, 4.5, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+							   1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0};
 	Matrix3D mat(vals, 3, 3, 3);
 
 	mat /= 2.0;
@@ -159,19 +105,8 @@ TEST(Matrix3DTest, testDivScalarInPlace) {
 }
 
 TEST(Matrix3DTest, testMultScalarInPlace) {
-	std::vector<float> vals = {
-		1.0, 4.5, 1.0,
-		1.0, 1.0, 1.0,
-		1.0, 1.0, 1.0,
-
-		1.0, 1.0, 1.0,
-		1.0, 1.0, 1.0,
-		1.0, 1.0, 1.0,
-
-		1.0, 1.0, 1.0,
-		1.0, 1.0, 1.0,
-		1.0, 1.0, 1.0
-	};
+	std::vector<float> vals = {1.0, 4.5, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+							   1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0};
 	Matrix3D mat(vals, 3, 3, 3);
 
 	mat *= 10.0;
@@ -182,19 +117,8 @@ TEST(Matrix3DTest, testMultScalarInPlace) {
 }
 
 TEST(Matrix3DTest, testCap) {
-	std::vector<float> vals = {
-		1.20, 4.5, 0.97,
-		1.0, 1.0, 1.0,
-		1.0, 1.0, 1.0,
-
-		1.0, 1.0, 1.0,
-		1.0, 1.0, 1.0,
-		1.0, 1.0, 1.0,
-
-		1.0, 1.0, 1.0,
-		1.0, 1.0, 1.0,
-		1.0, 1.0, 1.0
-	};
+	std::vector<float> vals = {1.20, 4.5, 0.97, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+							   1.0,  1.0, 1.0,  1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0};
 	Matrix3D mat(vals, 3, 3, 3);
 
 	Matrix3D capped = mat.cap(1.0f);
@@ -258,7 +182,7 @@ TEST(Matrix3DTest, testUnequalNeighbour) {
 	Matrix3D neighbourhood = mat.unequal_neighbourhood(3, 3, 3, 1, 2);
 	ASSERT_EQ(4, neighbourhood.width);
 	ASSERT_EQ(4, neighbourhood.height);
-	ASSERT_EQ(4, neighbourhood.depth); 
+	ASSERT_EQ(4, neighbourhood.depth);
 
 	neighbourhood = mat.unequal_neighbourhood(6, 6, 6, 1, 2);
 	ASSERT_EQ(4, neighbourhood.width);

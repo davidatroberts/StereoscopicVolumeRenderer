@@ -2,9 +2,9 @@
 
 #include <cmath>
 
-Vector blinn_phong(Vector normal, Vector view_direction, 
-	Vector light_direction, Vector ka, Vector kd, Vector ks, 
-	double shininess, Vector light_colour, Vector ambient_colour) {
+Vector blinn_phong(
+	Vector normal, Vector view_direction, Vector light_direction, Vector ka, Vector kd, Vector ks, double shininess,
+	Vector light_colour, Vector ambient_colour) {
 	// calculate the halfway vector
 	Vector half = light_direction + view_direction;
 	half = half.normalized();
@@ -17,8 +17,7 @@ Vector blinn_phong(Vector normal, Vector view_direction,
 	Vector diffuse = kd * light_colour * diffuse_light;
 
 	// compute the specular term
-	double specular_light = pow(std::max(half.dot(normal), 0.0), 
-		shininess);
+	double specular_light = pow(std::max(half.dot(normal), 0.0), shininess);
 	if (diffuse_light <= 0)
 		specular_light = 0;
 	Vector specular = ks * light_colour * specular_light;
@@ -26,9 +25,8 @@ Vector blinn_phong(Vector normal, Vector view_direction,
 	return ambient + diffuse + specular;
 }
 
-std::function<Vector(Vector, Vector, Vector, Vector, Vector, 
-	Vector, double, Vector, Vector)> IlluminationModelFactory::make_model(
-	IlluminationModelType model_type) {
+std::function<Vector(Vector, Vector, Vector, Vector, Vector, Vector, double, Vector, Vector)>
+IlluminationModelFactory::make_model(IlluminationModelType model_type) {
 	switch (model_type) {
 		case IlluminationModelType::BLINN_PHONG: {
 			return blinn_phong;

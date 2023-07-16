@@ -1,12 +1,12 @@
-#include "cc_premultiplied_trilinear.hpp"
-
-#include <gtest/gtest.h>
 #include <gmock/gmock.h>
+#include <gtest/gtest.h>
 #include <math.h>
+
 #include <random>
 
-#include "vector.hpp"
+#include "cc_premultiplied_trilinear.hpp"
 #include "matrix_3d.hpp"
+#include "vector.hpp"
 
 TEST(testCCPremultipliedTrilinear, DISABLED_testPreprocess) {
 	// create the interpolation filter

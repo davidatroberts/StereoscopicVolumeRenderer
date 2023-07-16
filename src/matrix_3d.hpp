@@ -1,10 +1,10 @@
 #pragma once
 
 #include <cmath>
+#include <complex>
 #include <iostream>
 #include <tuple>
 #include <vector>
-#include <complex>
 
 #include "Array.h"
 

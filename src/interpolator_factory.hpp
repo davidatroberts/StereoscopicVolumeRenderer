@@ -1,8 +1,8 @@
 #pragma once
 
-#include "vector.hpp"
 #include "interpolator.hpp"
 #include "settings.hpp"
+#include "vector.hpp"
 
 class InterpolatorFactory {
 public:

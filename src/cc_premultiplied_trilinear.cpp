@@ -20,7 +20,7 @@ CCPremultipliedTrilinear::CCPremultipliedTrilinear(const CCPremultipliedTrilinea
 CCPremultipliedTrilinear::~CCPremultipliedTrilinear() {}
 
 void CCPremultipliedTrilinear::preprocess(Matrix3D &grid) {
-	#if false
+#if false
 	// convert into complex array
 	Array::array3<Complex> spatial = grid.to_complex_array();
 	size_t align = sizeof(Complex);
@@ -91,7 +91,7 @@ void CCPremultipliedTrilinear::preprocess(Matrix3D &grid) {
 	// load back into the matrix
 	grid = result_m;
 
-	#endif
+#endif
 }
 
 double CCPremultipliedTrilinear::interpolate(const Vector &position, const Matrix3D &mat) const {

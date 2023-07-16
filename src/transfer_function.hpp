@@ -6,8 +6,7 @@
 #include "vector.hpp"
 #include "vector4.hpp"
 
-class TransferFunction
-{
+class TransferFunction {
 public:
 	TransferFunction(double base_sample_step);
 	~TransferFunction();
@@ -17,8 +16,7 @@ public:
 	bool map_transfer_function(std::string red, std::string green, std::string blue, std::string alpha);
 
 	// interpolate the transfer function
-	inline
-	Vector4 sample_rgba_d(double density) {
+	inline Vector4 sample_rgba_d(double density) {
 		double mapped_density = Util::map_range(min_dens, max_dens, min_trans, max_trans, density);
 
 		double g, gg;
@@ -45,17 +43,16 @@ public:
 	Vector4 sample_rgba_with_sample_step(int density, double sample_step) {
 		Vector4 col = transfer_[density];
 
-		col.w = 1.0 - pow(1.0 - col.w, sample_step/base_sample_step_);
+		col.w = 1.0 - pow(1.0 - col.w, sample_step / base_sample_step_);
 		return col;
 	}
 
-	inline
-	double linear(double target, double v1, double v2) {
-		return (target*(double)v2) + ((1.0f - target) * (double)v1); 
+	inline double linear(double target, double v1, double v2) {
+		return (target * (double)v2) + ((1.0f - target) * (double)v1);
 	}
 
 private:
-	Vector4 transfer_[USHRT_MAX+1];
+	Vector4 transfer_[USHRT_MAX + 1];
 	double base_sample_step_;
 	double min_dens, max_dens, min_trans, max_trans;
 };
